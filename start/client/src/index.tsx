@@ -9,7 +9,10 @@ import injectStyles from './styles';
 
 const cache = new InMemoryCache();
 const link = new HttpLink({
-  uri: 'http://localhost:4000/'
+  uri: 'http://localhost:4000/',
+  headers: {
+    authorization: localStorage.getItem('token'),
+  }, 
 });
 
 const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
