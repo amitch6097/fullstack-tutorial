@@ -34,6 +34,20 @@ const GET_LAUNCHES = gql`
   ${LAUNCH_TILE_DATA}
 `;
 
+export const GET_LAUNCH_DETAILS = gql`
+  query LaunchDetails($launchId: ID!) {
+    launch(id: $launchId) {
+      isInCart @client
+      site
+      rocket {
+        type
+      }
+      ...LaunchTile
+    }
+  }
+  ${LAUNCH_TILE_DATA}
+`;
+
 interface LaunchesProps extends RouteComponentProps {}
 
 const Launches: React.FC<LaunchesProps> = () => {
